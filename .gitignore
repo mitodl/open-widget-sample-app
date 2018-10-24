@@ -55,6 +55,7 @@ coverage/
 # Django stuff:
 *.log
 celerybeat-schedule.db
+*.sqlite3
 
 # Sphinx documentation
 docs/_build/
@@ -70,7 +71,7 @@ target/
 .env
 
 # webpack
-static/bundles
+static/
 node_modules
 
 # JS directories

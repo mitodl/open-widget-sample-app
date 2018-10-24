@@ -2,9 +2,9 @@ import {hot} from 'react-hot-loader'
 import React, {Component} from 'react'
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
 import Octicon from 'react-component-octicons'
-import WidgetList from '../node_modules/open-widget-framework/src/widget-list'
+import WidgetList from '../node_modules/open-widget-framework/open-widget-framework/src/widget-list'
 
-import {fetchJsonData, apiPath} from './helpers'
+import {fetchJsonData, apiPath} from '../node_modules/open-widget-framework/open-widget-framework/src/helpers'
 
 /**
  * Home is the home page of the sample widget-framework app. It renders a list of widget lists and one specified
@@ -15,8 +15,14 @@ import {fetchJsonData, apiPath} from './helpers'
  *    baseUrl: the base url to build api endpoints off of
  */
 class Home extends Component {
-  state = {
-    widgetLists: null,
+  constructor(props) {
+    super(props)
+    this.state = {
+      widgetLists: null,
+    }
+    this.updateLists = this.updateLists.bind(this)
+    this.addList = this.addList.bind(this)
+    this.deleteList = this.deleteList.bind(this)
   }
 
   componentDidMount() {
@@ -26,16 +32,18 @@ class Home extends Component {
     fetchJsonData(apiPath('get_lists'), this.updateLists)
   }
 
-  updateLists = (data) => this.setState({widgetLists: data.map(obj => obj.id)})
+  updateLists(data) {
+    this.setState({widgetLists: data.map(obj => obj.id)})
+  }
 
-  addList = () => {
+  addList() {
     /**
      * Make request to create new widget list
      */
     fetchJsonData(apiPath('create_list'), this.updateLists)
   }
 
-  deleteList = (listId) => {
+  deleteList(listId) {
     /**
      * Make request to delete widget list
      */

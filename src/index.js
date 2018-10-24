@@ -1,5 +1,4 @@
-import './index'
-import './App.css'
+import './index.css'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import 'octicons'
 
@@ -8,4 +7,4 @@ import {render} from 'react-dom'
 
 import Home from './home'
 
-render(<Home/>, document.querySelector('#app'))
+render(<Home/>, document.querySelector('#react'))
