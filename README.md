@@ -2,33 +2,30 @@
 
 A sample app to demonstrate, develop and test the open widget framework.
 
-To run the app, pip install the open-widget-framework django app:
+## Installation
+pip install the `open_widget_framework` django package (https://github.com/mitodl/open-widget-sample-app):
+```bash
+pip install open_widget_framework
+```  
 
-  pip install local/path/to/open_widget_framework
+npm install the `open-widget-framework` npm module (https://github.com/mitodl/open-widget-sample-app). 
+```bash
+npm install open-widget-framework
+```  
 
-or once the module is published:
+Install other dependencies with `pip-compile` -> `pip-sync` and `npm install`
 
-  pip install open_widget_framework
-  
-Then install the node module. To do do locally, run npm link in the open-widget-framework repo and then in the sample-app repo run
-  
-  npm link open-widget-framework
-  
-or once the module is published:
+Compile the js with:
+```bash
+npm run build
+```  
 
-  npm install open-widget-framework
-  
-
-Install other dependencies with pip-compile -> pip-sync and npm install
-Compile the js with
-
-  npm run build
-  
 and then collect the static files with
-
-  python manage.py collectstatic
-  
-Finally run the server with 
-
-  python manage.py runserver
-  
+```bash
+python manage.py collectstatic
+```    
+## Running Locally
+To run application locally, use:
+```bash
+python manage.py runserver
+```
