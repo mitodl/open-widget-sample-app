@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'webpack_loader',
-    'open_widget_framework.apps.OpenWidgetFrameworkConfig',
+    'open_widget_framework',
     'open_widget_sample_app'
 ]
 
