@@ -10,7 +10,7 @@ pip install open_widget_framework
 
 npm install the `open-widget-framework` npm module: 
 ```bash
-npm install open-widget-framework
+npm install @zagaran/open-widget-framework
 ```  
 
 Install other dependencies with `pip-compile` -> `pip-sync` and `npm install`

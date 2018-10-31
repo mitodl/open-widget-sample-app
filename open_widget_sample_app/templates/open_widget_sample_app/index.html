@@ -10,7 +10,6 @@
     <meta name="description" content="">
     {% render_bundle 'runtime' 'css' %}
     {% render_bundle 'index' 'css' %}
-    {% render_bundle 'vendor' 'css' %}
     <script>
       var csrfToken = '{{ csrf_token }}'
       var apiBase = '{{ site_url }}'
@@ -20,6 +19,5 @@
     <div id="react"></div>
     {% render_bundle 'runtime' 'js' %}
     {% render_bundle 'index' 'js' %}
-    {% render_bundle 'vendor' 'js' %}
   </body>
 </html>

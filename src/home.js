@@ -2,9 +2,9 @@ import {hot} from 'react-hot-loader'
 import React, {Component} from 'react'
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
 import Octicon from 'react-component-octicons'
-import WidgetList from '../node_modules/open-widget-framework/open-widget-framework/src/widget-list'
+import WidgetList from '@zagaran/open-widget-framework/es/widget-list'
 
-import {fetchJsonData, apiPath} from '../node_modules/open-widget-framework/open-widget-framework/src/helpers'
+import {fetchJsonData, apiPath} from '@zagaran/open-widget-framework/es/utils'
 
 /**
  * Home is the home page of the sample widget-framework app. It renders a list of widget lists and one specified
@@ -40,14 +40,14 @@ class Home extends Component {
     /**
      * Make request to create new widget list
      */
-    fetchJsonData(apiPath('create_list'), this.updateLists)
+    fetchJsonData(apiPath('widget_list'), this.updateLists, {method: 'POST'})
   }
 
   deleteList(listId) {
     /**
      * Make request to delete widget list
      */
-    fetchJsonData(apiPath('delete_list', listId), this.updateLists)
+    fetchJsonData(apiPath('widget_list', listId), this.updateLists, {method: 'DELETE'})
   }
 
   render() {
