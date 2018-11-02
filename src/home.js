@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
 import Octicon from 'react-component-octicons'
 import WidgetList from '@zagaran/open-widget-framework/es/widget-list'
+import {MyListWrapper, MyWidgetWrapper} from "./wrappers";
 
 import {fetchJsonData, apiPath} from '@zagaran/open-widget-framework/es/utils'
 
@@ -61,7 +62,9 @@ class Home extends Component {
         <Router>
           <div className={'widget-home'}>
             <Route path='/list/:widgetListId' render={({match}) => (
-              <WidgetList widgetListId={match.params.widgetListId}/>
+              <WidgetList widgetListId={match.params.widgetListId}
+                          widgetWrapper={MyWidgetWrapper}
+                          listWrapper={MyListWrapper}/>
             )}/>
             <div className={'widget-list-navigator container'}>
               <Link className={'btn btn-link mt-3'} to='/'>Home</Link>
@@ -84,6 +87,12 @@ class Home extends Component {
         </Router>
       )
     }
+  }
+}
+
+class MyComponent extends Component {
+  render() {
+    return (<p>Here are the props</p>)
   }
 }
 
