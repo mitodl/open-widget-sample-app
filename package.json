@@ -12,7 +12,7 @@
     "test:watch": "nwb test-react --server"
   },
   "dependencies": {
-    "@zagaran/open-widget-framework": "^0.1.1",
+    "@zagaran/open-widget-framework": "^0.1.21",
     "lodash.range": "^3.2.0",
     "octicons": "^8.1.0",
     "react": "^16.5.2",

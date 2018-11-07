@@ -4,8 +4,9 @@ import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
 import Octicon from 'react-component-octicons'
 import WidgetList from '@zagaran/open-widget-framework/es/widget-list'
 import {MyListWrapper, MyWidgetWrapper} from "./wrappers";
+import configureWidgetFrameworkSettings from '@zagaran/open-widget-framework/es/config'
 
-import {fetchJsonData, apiPath} from '@zagaran/open-widget-framework/es/utils'
+import {apiPath} from '@zagaran/open-widget-framework/es/utils'
 
 /**
  * Home is the home page of the sample widget-framework app. It renders a list of widget lists and one specified
@@ -20,6 +21,7 @@ class Home extends Component {
     super(props)
     this.state = {
       widgetLists: null,
+      widgetFrameworkSettings: configureWidgetFrameworkSettings()
     }
     this.updateLists = this.updateLists.bind(this)
     this.addList = this.addList.bind(this)
@@ -30,7 +32,9 @@ class Home extends Component {
     /**
      * Fetch data on widget lists from fetchRoute
      */
-    fetchJsonData(apiPath('get_lists'), this.updateLists)
+    this.state.widgetFrameworkSettings.fetchData(apiPath('get_lists'))
+      .then(this.updateLists)
+      .catch(this.state.widgetFrameworkSettings.errorHandler)
   }
 
   updateLists(data) {
@@ -41,14 +45,18 @@ class Home extends Component {
     /**
      * Make request to create new widget list
      */
-    fetchJsonData(apiPath('widget_list'), this.updateLists, {method: 'POST'})
+    this.state.widgetFrameworkSettings.fetchData(apiPath('widget_list'), {method: 'POST'})
+      .then(this.updateLists)
+      .catch(this.state.widgetFrameworkSettings.errorHandler)
   }
 
   deleteList(listId) {
     /**
      * Make request to delete widget list
      */
-    fetchJsonData(apiPath('widget_list', listId), this.updateLists, {method: 'DELETE'})
+    this.state.widgetFrameworkSettings.fetchData(apiPath('widget_list', listId), {method: 'DELETE'})
+      .then(this.updateLists)
+      .catch(this.state.widgetFrameworkSettings.errorHandler)
   }
 
   render() {
@@ -56,15 +64,15 @@ class Home extends Component {
      * Render background list of available widget lists and one WidgetList specified in the route using react-router
      */
     if (this.state.widgetLists === null) {
-      return (<p>Loading</p>)
+      return (this.state.widgetFrameworkSettings.loader)
     } else {
       return (
         <Router>
           <div className={'widget-home'}>
             <Route path='/list/:widgetListId' render={({match}) => (
               <WidgetList widgetListId={match.params.widgetListId}
-                          widgetWrapper={MyWidgetWrapper}
-                          listWrapper={MyListWrapper}/>
+                          widgetFrameworkSettings={this.state.widgetFrameworkSettings}
+              />
             )}/>
             <div className={'widget-list-navigator container'}>
               <Link className={'btn btn-link mt-3'} to='/'>Home</Link>
