@@ -6,3 +6,4 @@ ipython
 psycopg2
 django-cors-headers
 open-widget-framework
+django-guardian
