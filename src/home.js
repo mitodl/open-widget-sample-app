@@ -1,4 +1,3 @@
-import {hot} from 'react-hot-loader'
 import React, {Component} from 'react'
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
 import Octicon from 'react-component-octicons'
@@ -71,9 +70,9 @@ class Home extends Component {
     /**
      * Render background list of available widget lists and one WidgetList specified in the route using react-router
      */
-    const { widgetLists, loader } = this.state
+    const { widgetLists, Loader } = this.state
     if (widgetLists === null) {
-      return (loader)
+      return <Loader/>
     } else {
       return (
         <Router>
@@ -107,4 +106,4 @@ class Home extends Component {
   }
 }
 
-export default hot(module)(Home)
+export default Home
