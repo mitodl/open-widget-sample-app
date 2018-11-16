@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
 import Octicon from 'react-component-octicons'
 import WidgetList from '@zagaran/open-widget-framework/es/widget_list'
 import { ModalFormWrapper, ConfirmDeleteWidgetWrapper, HighlightEditListWrapper } from "./wrappers";
-import { configureWidgetFrameworkSettings } from '@zagaran/open-widget-framework/es/config'
+import { defaultSettings } from '@zagaran/open-widget-framework/es/config'
 
 import {apiPath} from '@zagaran/open-widget-framework/es/utils'
 
@@ -21,11 +21,12 @@ class Home extends Component {
     super(props)
     this.state = {
       widgetLists: null,
-      ...configureWidgetFrameworkSettings({
+      mySettings: {
         // FormWrapper: ModalFormWrapper,
         // WidgetWrapper: ConfirmDeleteWidgetWrapper,
         // ListWrapper: HighlightEditListWrapper,
-      })
+      },
+      ...defaultSettings,
     }
     this.updateLists = this.updateLists.bind(this)
     this.addList = this.addList.bind(this)
@@ -79,7 +80,7 @@ class Home extends Component {
           <div className={'widget-home'}>
             <Route path='/list/:widgetListId' render={({match}) => (
               <WidgetList widgetListId={match.params.widgetListId}
-                          {...this.state}
+                          {...this.state.mySettings}
               />
             )}/>
             <div className={'widget-list-navigator container'}>
