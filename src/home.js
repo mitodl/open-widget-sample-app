@@ -17,20 +17,14 @@ class Home extends Component {
    *    fetchRoute: where to widget lists from
    *    baseUrl: the base url to build api endpoints off of
    */
-  constructor(props) {
-    super(props)
-    this.state = {
-      widgetLists: null,
-      mySettings: {
-        // FormWrapper: ModalFormWrapper,
-        // WidgetWrapper: ConfirmDeleteWidgetWrapper,
-        // ListWrapper: HighlightEditListWrapper,
-      },
-      ...defaultSettings,
-    }
-    this.updateLists = this.updateLists.bind(this)
-    this.addList = this.addList.bind(this)
-    this.deleteList = this.deleteList.bind(this)
+  state = {
+    widgetLists: null,
+    mySettings: {
+      // FormWrapper: ModalFormWrapper,
+      // WidgetWrapper: ConfirmDeleteWidgetWrapper,
+      // ListWrapper: HighlightEditListWrapper,
+    },
+    ...defaultSettings,
   }
 
   componentDidMount() {
@@ -39,31 +33,34 @@ class Home extends Component {
      */
     const { fetchData, errorHandler } = this.state
     fetchData(apiPath('get_lists'))
-      .then(this.updateLists)
+      .then(data => { this.setState({widgetLists: data.map(widgetList => widgetList.id)}) })
       .catch(errorHandler)
   }
 
-  updateLists(data) {
-    this.setState({widgetLists: data})
-  }
-
-  addList() {
+  addList = () => {
     /**
      * Make request to create new widget list
      */
-    const { fetchData, errorHandler } = this.state
+    const { fetchData, errorHandler, widgetLists } = this.state
     fetchData(apiPath('widget_list'), {method: 'POST'})
-      .then(this.updateLists)
+      .then(data => {
+        widgetLists.push(data.id)
+        this.setState({widgetLists: widgetLists})
+      })
       .catch(errorHandler)
   }
 
-  deleteList(listId) {
+  deleteList = (listId) => {
     /**
      * Make request to delete widget list
+     * NOTE: we just use fetch here because the DELETE method doesn't return json data
      */
-    const { fetchData, errorHandler } = this.state
-    fetchData(apiPath('widget_list', listId), {method: 'DELETE'})
-      .then(this.updateLists)
+    const { errorHandler, widgetLists } = this.state
+    fetch(apiPath('widget_list', listId), {method: 'DELETE'})
+      .then(() => {
+        widgetLists.splice(widgetLists.indexOf(listId), 1)
+        this.setState({widgetLists: widgetLists})
+      })
       .catch(errorHandler)
   }
 

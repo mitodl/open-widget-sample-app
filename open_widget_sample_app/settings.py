@@ -151,7 +151,5 @@ WEBPACK_LOADER = {
 CORS_ORIGIN_ALLOW_ALL = True
 
 WIDGET_FRAMEWORK = {
-    'WIDGET_FRAMEWORK_AUTHENTICATION_CLASSES': (BasicAuthentication,),
-    'WIDGET_FRAMEWORK_PERMISSION_CLASSES': (DjangoObjectPermissions,),
-    'WIDGET_LIST_EDIT_PERMISSIONS': ['change_widgetlist']
+    # 'WIDGET_LIST_EDIT_PERMISSIONS': ['change_widgetlist']
 }
