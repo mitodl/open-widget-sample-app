@@ -39,7 +39,7 @@ class HighlightEditListWrapper extends Component {
     return (
       <div className={'col-lg-4 float-right m-8 '}>
         <p>
-          This list will highlight the widget that is currently being edited. Its defined in HighlightEditListWrapper
+          This list will highlight the widget that is currently being edited. It's defined in HighlightEditListWrapper
         </p>
         {addWidgetForm ? renderNewWidgetForm({
           closeForm: this.closeForm,
