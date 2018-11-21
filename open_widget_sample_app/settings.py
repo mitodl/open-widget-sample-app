@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from rest_framework.authentication import BasicAuthentication
+from rest_framework.permissions import DjangoObjectPermissions
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -40,7 +42,8 @@ INSTALLED_APPS = [
     'django_extensions',
     'webpack_loader',
     'open_widget_framework',
-    'open_widget_sample_app'
+    'open_widget_sample_app',
+    'guardian'
 ]
 
 MIDDLEWARE = [
@@ -74,6 +77,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'open_widget_sample_app.wsgi.application'
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'guardian.backends.ObjectPermissionBackend',
+)
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
@@ -143,4 +150,6 @@ WEBPACK_LOADER = {
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-SITE_BASE_URL = 'http://127.0.0.1:8000/api/v1/'
+WIDGET_FRAMEWORK = {
+    # 'WIDGET_LIST_EDIT_PERMISSIONS': ['change_widgetlist']
+}
