@@ -38,7 +38,9 @@ class HighlightEditListWrapper extends Component {
     const { renderEditWidgetForm, renderNewWidgetForm, renderList } = this.props
     return (
       <div className={'col-lg-4 float-right m-8 '}>
-        <p>This list will highlight the widget that is currently being edited. It's defined in HighlightEditListWrapper</p>
+        <p>
+          This list will highlight the widget that is currently being edited. It's defined in HighlightEditListWrapper
+        </p>
         {addWidgetForm ? renderNewWidgetForm({
           closeForm: this.closeForm,
           listPropClassNames: 'text-success border border-success rounded'
