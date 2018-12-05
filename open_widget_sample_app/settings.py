@@ -62,7 +62,7 @@ ROOT_URLCONF = 'open_widget_sample_app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'open_widget_sample_app/templates/open_widget_sample_app/'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -151,5 +151,7 @@ WEBPACK_LOADER = {
 CORS_ORIGIN_ALLOW_ALL = True
 
 WIDGET_FRAMEWORK = {
+    'WIDGET_FRAMEWORK_AUTHENTICATION_CLASSES': BasicAuthentication,
+    'WIDGET_FRAMEWORK_PERMISSION_CLASSES': DjangoObjectPermissions
     # 'WIDGET_LIST_EDIT_PERMISSIONS': ['change_widgetlist']
 }

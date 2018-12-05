@@ -20,8 +20,8 @@ class Home extends Component {
   state = {
     widgetLists: null,
     mySettings: {
-      // FormWrapper: ModalFormWrapper,
-      // WidgetWrapper: ConfirmDeleteWidgetWrapper,
+      FormWrapper: ModalFormWrapper,
+      WidgetWrapper: ConfirmDeleteWidgetWrapper,
       // ListWrapper: HighlightEditListWrapper,
     },
     ...defaultSettings,
