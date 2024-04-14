@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
-backcall==0.1.0           # via ipython
+backcall==0.2.0           # via ipython
 click==7.0                # via pip-tools
 decorator==4.3.0          # via ipython, traitlets
 django-cors-headers==2.4.0
