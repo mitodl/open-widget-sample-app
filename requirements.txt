@@ -14,7 +14,7 @@ django-webpack-loader==0.7.0
 django==2.1.2
 djangorestframework==3.15.1  # via open-widget-framework
 ipython-genutils==0.2.0   # via traitlets
-ipython==7.16.3
+ipython==7.34.0
 jedi==0.13.1              # via ipython
 open-widget-framework==0.2.14
 parso==0.3.1              # via jedi
