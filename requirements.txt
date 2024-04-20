@@ -23,7 +23,7 @@ pickleshare==0.7.5        # via ipython
 pip-tools==3.9.0
 prompt-toolkit==2.0.10     # via ipython
 psycopg2==2.9.9
-ptyprocess==0.6.0         # via pexpect
+ptyprocess==0.7.0         # via pexpect
 pygments==2.2.0           # via ipython
 pytz==2018.7              # via django
 six==1.11.0               # via django-extensions, django-guardian, pip-tools, prompt-toolkit, traitlets
