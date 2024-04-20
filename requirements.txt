@@ -20,7 +20,7 @@ open-widget-framework==0.2.14
 parso==0.8.4              # via jedi
 pexpect==4.9.0            # via ipython
 pickleshare==0.7.5        # via ipython
-pip-tools==3.1.0
+pip-tools==3.9.0
 prompt-toolkit==2.0.10     # via ipython
 psycopg2==2.7.5
 ptyprocess==0.6.0         # via pexpect
