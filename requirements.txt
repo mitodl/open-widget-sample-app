@@ -26,6 +26,6 @@ psycopg2==2.9.9
 ptyprocess==0.7.0         # via pexpect
 pygments==2.17.2           # via ipython
 pytz==2018.9              # via django
-six==1.11.0               # via django-extensions, django-guardian, pip-tools, prompt-toolkit, traitlets
+six==1.16.0               # via django-extensions, django-guardian, pip-tools, prompt-toolkit, traitlets
 traitlets==4.3.3          # via ipython
 wcwidth==0.1.7            # via prompt-toolkit
