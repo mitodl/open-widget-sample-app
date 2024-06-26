@@ -6,7 +6,7 @@
 #
 backcall==0.2.0           # via ipython
 click==7.1.2                # via pip-tools
-decorator==4.4.2          # via ipython, traitlets
+decorator==5.1.1          # via ipython, traitlets
 django-cors-headers==2.5.3
 django-extensions==2.2.9
 django-guardian==1.5.1
